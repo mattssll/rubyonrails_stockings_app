@@ -1,2 +1,23 @@
 <h1>Stocking</h1>
-<p>This is my app</p>
+<%# creating a form, that points to the root_path (where it will be rendered) %>
+<%= form_tag root_path, :method => 'POST' do %>
+	<%= text_field_tag 'ticker', nil, placeholder: "Enter Ticker Symbol", size: 50 %>
+	<%= submit_tag 'Lookup' %>
+<% end %>
+
+
+
+<%# error handling just like in home controller %>
+<%# the = sign after % means printing it to the screen %>
+<%# this file is playing with the home_controller, sending and receiving stuff w/ parameters %>
+<% if @stock %>
+	<%= @stock.company_name %><br/>
+	$<%= @stock.latest_price %><br/>
+<% elsif @nothing %>
+	<%= @nothing %>
+<% end %>
+
+
+<% if @error %>
+		<%= @error %>
+<% end %>
