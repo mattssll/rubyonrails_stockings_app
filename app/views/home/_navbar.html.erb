@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="d-flex flex-grow-1">
         <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
     <img src="https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/ruby-on-rails-512.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
     Stocks App
   </a>
@@ -14,18 +14,45 @@
     </div>
     <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
         <ul class="navbar-nav ml-auto flex-nowrap">
-            <li class="nav-item">
-                <a href="#" class="nav-link m-2 menu-item nav-active">About</a>
+            
+
+            <% if user_signed_in? %> 
+
+            <li class="nav-item">  
+              <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link m-2 menu-item" %>
             </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link m-2 menu-item">How We Help</a>
+
+
+            <li class="nav-item">  
+              <%= link_to "See your Stocks", stocks_path, class: "nav-link m-2 menu-item" %>
             </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link m-2 menu-item">Blog</a>
+
+            <li class="nav-item"> 
+              <%= link_to "Add Stock", new_stock_path, class: "nav-link m-2 menu-item" %>
+            </li>  
+
+
+            <li class="nav-item"> 
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link m-2 menu-item" %>
             </li>
+            
+            <% else %>
+
+              <li class="nav-item"> 
+                <%= link_to "Sign Up", new_user_registration_path, class: "nav-link m-2 menu-item" %>
+              </li>
+              <li class="nav-item">
+                  <%= link_to "Login", new_user_session_path, class: "nav-link m-2 menu-item" %>
+              </li>
+
+            <% end %>
+
+            
+            
             <li class="nav-item">
-                <a href="#" class="nav-link m-2 menu-item">Contact</a>
+              <%= link_to "About", home_about_path, class: "nav-link m-2 menu-item" %>
             </li>
+            
         </ul>
     </div>
 </nav>
